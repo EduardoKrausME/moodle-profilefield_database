@@ -1,38 +1,36 @@
 .path-user-profile-field-database fieldset {
-  border: 1px solid #c8c8c8;
-  padding-inline-start: 0.75em;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  padding-bottom: 15px;
+    border: 1px solid #c8c8c8;
+    padding-inline-start: 0.75em;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
 }
 .path-user-profile-field-database legend {
-  float: initial;
-  width: auto;
-  margin-bottom: 5px;
+    float: initial;
+    width: auto;
+    margin-bottom: 5px;
 }
 .path-user-profile-field-database .form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 .path-user-profile-field-database .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+    background-color: #007bff;
+    border-color: #007bff;
 }
 .path-user-profile-field-database .btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 .path-user-profile-field-database .invalid-feedback {
-  font-size: 0.875em;
-  color: #dc3545;
+    font-size: 0.875em;
+    color: #dc3545;
 }
 .path-user-profile-field-database .text-small {
-  font-size: 0.9rem;
-  font-weight: 300;
+    font-size: 0.9rem;
+    font-weight: 300;
 }
 .path-user-profile-field-database .form-label {
-  font-weight: bold;
-  color: #495057;
+    font-weight: bold;
+    color: #495057;
 }
-
-/*# sourceMappingURL=styles.css.map */
