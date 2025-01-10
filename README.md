@@ -22,7 +22,7 @@ This plugin allows Moodle administrators to create user profile fields filled wi
 - Administrators can update the data in the database table to dynamically modify the available options.
 
 ## Requirements
-- Moodle 3.9 or higher.
+- Moodle 4.1 or higher.
 - Access to configure custom profile fields.
 
 ## Use Case Examples
