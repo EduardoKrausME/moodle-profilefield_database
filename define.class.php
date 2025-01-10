@@ -78,26 +78,4 @@ class profile_define_database extends profile_define_base {
         }
         return $errors;
     }
-
-    /**
-     * Function define_after_data
-     *
-     * @param MoodleQuickForm $mform
-     */
-    public function define_after_data(&$mform) {
-        // Do nothing - overwrite if necessary.
-    }
-
-    /**
-     * Function define_save_preprocess
-     *
-     * @param array|object $data
-     *
-     * @return object
-     */
-    public function define_save_preprocess($data) {
-        $data = (array)$data;
-
-        return $data;
-    }
 }
