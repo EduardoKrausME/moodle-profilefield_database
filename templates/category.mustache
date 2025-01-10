@@ -1,0 +1,35 @@
+<div class="table-responsive">
+    {{#is_categorys}}
+        <table class="generaltable">
+            <thead>
+            <tr>
+                <th class="header c0">{{#str}}category_name,profilefield_database{{/str}}</th>
+                <th style="width: 100px; white-space: nowrap">&nbsp;</th>
+            </tr>
+            </thead>
+        <tbody>
+            {{#categorys}}
+            <tr>
+                <td>{{name}}</td>
+                <td style="width: 100px; white-space: nowrap">
+                    <a href="category-details.php?id={{id}}"
+                    class="btn btn-primary">{{#str}}details{{/str}}</a>
+
+                    <a href="category-edit.php?id={{id}}"
+                        class="btn btn-success">{{#str}}edit{{/str}}</a>
+
+                    <a href="category-edit.php?id={{id}}&delete=1"
+                    class="btn btn-danger">{{#str}}delete{{/str}}</a>
+                </td>
+            </tr>
+            </tbody>
+            {{/categorys}}
+        </table>
+    {{/is_categorys}}
+
+    {{^is_categorys}}
+        <div class="alert alert-warning">{{#str}}category_none,profilefield_database{{/str}}</div>
+    {{/is_categorys}}
+    <p><a href="category-edit.php?id=-1"
+          class="btn btn-primary">{{#str}}add-new-category,profilefield_database{{/str}}</a></p>
+</div>

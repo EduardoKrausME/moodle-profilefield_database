@@ -1,0 +1,80 @@
+<div class="table-responsive">
+    <table class="generaltable">
+        <thead>
+        <tr>
+            <th class="header c0">{{category.field0}}</th>
+            <th class="header c0">{{category.field1}}</th>
+            {{#category.field2}}
+                <th class="header c0">{{category.field2}}</th>
+            {{/category.field2}}
+            {{#category.field3}}
+                <th class="header c0">{{category.field3}}</th>
+            {{/category.field3}}
+            {{#category.field4}}
+                <th class="header c0">{{category.field4}}</th>
+            {{/category.field4}}
+            {{#category.field5}}
+                <th class="header c0">{{category.field5}}</th>
+            {{/category.field5}}
+            {{#category.field6}}
+                <th class="header c0">{{category.field6}}</th>
+            {{/category.field6}}
+            {{#category.field7}}
+                <th class="header c0">{{category.field7}}</th>
+            {{/category.field7}}
+            {{#category.field8}}
+                <th class="header c0">{{category.field8}}</th>
+            {{/category.field8}}
+            {{#category.field9}}
+                <th class="header c0">{{category.field69}}</th>
+            {{/category.field9}}
+            <th style="width: 100px; white-space: nowrap">&nbsp;</th>
+        </tr>
+        </thead>
+    <tbody>
+        {{#datas}}
+        <tr>
+            <th class="header c0">{{data0}}</th>
+            <th class="header c0">{{data1}}</th>
+            {{#category.field2}}
+                <th class="header c0">{{data2}}</th>
+            {{/category.field2}}
+            {{#category.field3}}
+                <th class="header c0">{{data3}}</th>
+            {{/category.field3}}
+            {{#category.field4}}
+                <th class="header c0">{{data4}}</th>
+            {{/category.field4}}
+            {{#category.field5}}
+                <th class="header c0">{{data5}}</th>
+            {{/category.field5}}
+            {{#category.field6}}
+                <th class="header c0">{{data6}}</th>
+            {{/category.field6}}
+            {{#category.field7}}
+                <th class="header c0">{{data7}}</th>
+            {{/category.field7}}
+            {{#category.field8}}
+                <th class="header c0">{{data8}}</th>
+            {{/category.field8}}
+            {{#category.field9}}
+                <th class="header c0">{{data69}}</th>
+            {{/category.field9}}
+            <td style="width: 100px; white-space: nowrap">
+                <a href="category-data.php?id={{id}}"
+                class="btn btn-primary">{{#str}}edit{{/str}}</a>
+
+                <a href="category-data.php?id={{id}}&delete=1"
+                class="btn btn-danger">{{#str}}delete{{/str}}</a>
+            </td>
+        </tr>
+        </tbody>
+        {{/datas}}
+    </table>
+
+    {{^num_datas}}
+        <div class="alert alert-warning">{{#str}}data_none,profilefield_database{{/str}}</div>
+    {{/num_datas}}
+    <p><a href="category-data.php?id=-1&category={{category.id}}"
+          class="btn btn-primary">{{#str}}add-new-data,profilefield_database{{/str}}</a></p>
+</div>

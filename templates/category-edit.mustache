@@ -1,0 +1,102 @@
+<form id="moodleForm" class="needs-validation" method="post" novalidate
+      enctype="multipart/form-data">
+    <input type="hidden" name="sesskey" value="{{config.sesskey}}">
+
+    <input type="hidden" name="categoryid" value="{{category.id}}">
+    <div class="mb-3">
+        <label for="category_name" class="form-label">{{#str}}category_name,profilefield_database{{/str}}</label>
+        <input type="text" class="form-control" id="category_name" name="category_name"
+               required
+               value="{{category.name}}"
+               placeholder="{{#str}}category_name-placeholder,profilefield_database{{/str}}">
+        <div class="form-text text-small">{{#str}}category_name-info,profilefield_database{{/str}}</div>
+        <div class="invalid-feedback">{{#str}}category_name-error,profilefield_database{{/str}}</div>
+    </div>
+
+    {{#fields}}
+        <fieldset class="inputs-fields">
+            {{#is_add}}
+                <legend>{{field}}</legend>
+                <div class="alert alert-warning">{{#str}}category_field-delete,profilefield_database{{/str}}</div>
+            {{/is_add}}
+            {{^is_add}}
+                <legend>{{#str}}category_field-title,profilefield_database{{/str}}</legend>
+                <div class="alert alert-warning">{{#str}}category_field-empty,profilefield_database{{/str}}</div>
+            {{/is_add}}
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="field{{id}}" class="form-label">{{#str}}
+                        category_field,profilefield_database{{/str}}</label>
+                    <input type="text" class="form-control" id="field{{id}}" name="field{{id}}"
+                           required
+                           value="{{field}}"
+                           placeholder="{{#str}}category_field-placeholder,profilefield_database{{/str}}">
+                    <div class="form-text text-small">{{#str}}category_field-info,profilefield_database{{/str}}</div>
+                    <div class="invalid-feedback">{{#str}}category_field-error,profilefield_database{{/str}}</div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="type{{id}}" class="form-label">{{#str}}
+                        field_type,profilefield_database{{/str}}</label>
+
+                    <select class="form-control" id="type{{id}}" name="type{{id}}"
+                            data-selected="{{type}}">
+                        <option value="int">{{#str}}field_type-int,profilefield_database{{/str}}</option>
+                        <option value="text">{{#str}}field_type-text,profilefield_database{{/str}}</option>
+                    </select>
+                    <div class="form-text text-small">{{#str}}field_type-info,profilefield_database{{/str}}</div>
+                </div>
+            </div>
+        </fieldset>
+    {{/fields}}
+
+    <div class="col-md-6 mb-3">
+        {{#category.id}}
+            <button type="submit" class="btn btn-primary">{{#str}}save{{/str}}</button>
+        {{/category.id}}
+        {{^category.id}}
+            <button type="submit" class="btn btn-primary">{{#str}}add{{/str}}</button>
+        {{/category.id}}
+    </div>
+
+</form>
+
+{{#js}}
+    /*
+    <script>*/
+    require(["jquery"], function($) {
+
+        $("#moodleForm select[data-selected]").each(function() {
+            var $select = $(this);
+            var selectedValue = $select.data("selected");
+            if (selectedValue == "") {
+                selectedValue = "text";
+            }
+            $select.val(selectedValue);
+        });
+
+        $("#moodleForm").on("submit", function(e) {
+            let isValid = true;
+
+            // Valida o campo "category_name"
+            var $categoryName = $("#category_name");
+            if ($categoryName.val().trim() === "") {
+                isValid = false;
+                $categoryName.addClass("is-invalid");
+            } else {
+                $categoryName.removeClass("is-invalid");
+            }
+
+            // Se não for válido, impede o envio do formulário
+            if (!isValid) {
+                e.preventDefault();
+            }
+        });
+
+        // Remove a classe de erro ao digitar no campo
+        $("#moodleForm input").on("input", function() {
+            $(this).removeClass("is-invalid");
+        });
+    });
+{{/js}}
