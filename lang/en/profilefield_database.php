@@ -62,3 +62,5 @@ $string['privacy:metadata'] = 'The database plugin does not store personal data 
 $string['report_category_description'] = 'This report displays detailed information about the students linked to the profile "{$a}".';
 $string['report_category_title'] = 'Report of students in the profile "{$a}"';
 $string['select-category'] = 'Select category';
+$string['database:addinstance'] = 'Add Instance';
+$string['database:viewreport'] = 'View Report';
