@@ -49,6 +49,8 @@ class profile_field_database extends profile_field_base {
      * @param int $fieldid
      * @param int $userid
      * @param object $fielddata
+     *
+     * @throws dml_exception
      */
     public function __construct($fieldid = 0, $userid = 0, $fielddata = null) {
         global $DB;
@@ -76,7 +78,7 @@ class profile_field_database extends profile_field_base {
      * Create the code snippet for this field instance
      * Overwrites the base class method
      *
-     * @param moodleform $mform Moodle form instance
+     * @param MoodleQuickForm $mform Moodle form instance
      */
     public function edit_field_add($mform) {
         $mform->addElement('select', $this->inputname, format_string($this->field->name), $this->options);
@@ -86,7 +88,7 @@ class profile_field_database extends profile_field_base {
      * Set the default value for this field instance
      * Overwrites the base class method.
      *
-     * @param moodleform $mform Moodle form instance
+     * @param MoodleQuickForm $mform Moodle form instance
      */
     public function edit_field_set_default($mform) {
         $key = $this->field->defaultdata;
@@ -128,7 +130,10 @@ class profile_field_database extends profile_field_base {
     /**
      * HardFreeze the field if locked.
      *
-     * @param moodleform $mform instance of the moodleform class
+     * @param MoodleQuickForm $mform instance of the moodleform class
+     *
+     * @throws coding_exception
+     * @throws dml_exception
      */
     public function edit_field_set_locked($mform) {
         if (!$mform->elementExists($this->inputname)) {
@@ -194,6 +199,7 @@ class profile_field_database extends profile_field_base {
      * Display the data for this field
      *
      * @return string HTML.
+     * @throws dml_exception
      */
     public function display_data() {
         global $DB, $OUTPUT;

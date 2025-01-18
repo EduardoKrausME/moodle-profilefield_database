@@ -45,6 +45,8 @@ class kopere_bi {
 
     /**
      * kopere_bi constructor.
+     *
+     * @throws \dml_exception
      */
     public function __construct() {
         global $DB;
@@ -83,6 +85,9 @@ class kopere_bi {
      * Function set_category
      *
      * @param profilefield_database_category $category
+     *
+     * @throws \coding_exception
+     * @throws \dml_exception
      */
     public function set_category($category) {
         global $USER, $DB;
@@ -120,6 +125,8 @@ class kopere_bi {
      * Function delete_category
      *
      * @param profilefield_database_category $category
+     *
+     * @throws \dml_exception
      */
     public static function delete_category($category) {
         global $DB;
@@ -131,6 +138,9 @@ class kopere_bi {
 
     /**
      * Function create_report
+     *
+     * @throws \dml_exception
+     * @throws \coding_exception
      */
     public function create_report() {
         global $DB;

@@ -36,6 +36,9 @@ class profile_define_database extends profile_define_base {
      * Function define_form_specific
      *
      * @param MoodleQuickForm $mform
+     *
+     * @throws coding_exception
+     * @throws dml_exception
      */
     public function define_form_specific($mform) {
         global $DB;
@@ -63,6 +66,8 @@ class profile_define_database extends profile_define_base {
      * @param array $files
      *
      * @return array
+     * @throws coding_exception
+     * @throws dml_exception
      */
     public function define_validate_specific($data, $files) {
         global $DB;
