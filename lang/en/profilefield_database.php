@@ -43,6 +43,8 @@ $string['category_none'] = 'No categories registered!';
 $string['confirm-delete-category'] = 'Are you sure you want to delete the category <strong>{$a}</strong>?';
 $string['confirm-delete-data'] = 'Are you sure you want to delete the record <strong>{$a->name}</strong>: <em>{$a->value}</em>?';
 $string['data_none'] = 'No data registered!';
+$string['database:addinstance'] = 'Add Instance';
+$string['database:viewreport'] = 'View Report';
 $string['delete-category'] = 'Delete the category';
 $string['delete-category-usedata'] = 'This category is being used in the field <a href="{$a->wwwroot}/user/profile/index.php" target="_blank">{$a->name}</a>';
 $string['delete-data'] = 'Delete the record';
@@ -62,5 +64,3 @@ $string['privacy:metadata'] = 'The database plugin does not store personal data 
 $string['report_category_description'] = 'This report displays detailed information about the students linked to the profile "{$a}".';
 $string['report_category_title'] = 'Report of students in the profile "{$a}"';
 $string['select-category'] = 'Select category';
-$string['database:addinstance'] = 'Add Instance';
-$string['database:viewreport'] = 'View Report';
