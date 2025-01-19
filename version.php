@@ -24,13 +24,13 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2025011001;
+$plugin->version = 2025011900;
 $plugin->requires = 2022112800;
 $plugin->component = "profilefield_database";
-$plugin->release = "1.0.2";
+$plugin->release = "1.0.3";
 $plugin->maturity = MATURITY_STABLE;
 
 $plugin->dependencies = [
-    "local_kopere_dashboard" => 2024121500,
-    "local_kopere_bi" => 2025011001,
+    "local_kopere_dashboard" => 2025011900,
+    "local_kopere_bi" => 2025011900,
 ];
