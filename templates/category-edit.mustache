@@ -23,18 +23,17 @@
         "id": 1,
         "name": "Mathematics"
       },
+      "is_add": false,
       "fields": [
         {
           "id": 1,
           "field": "Field Name 1",
-          "type": "text",
-          "is_add": true
+          "type": "text"
         },
         {
           "id": 2,
           "field": "Field Name 2",
-          "type": "int",
-          "is_add": false
+          "type": "int"
         }
       ]
     }
@@ -105,8 +104,6 @@
 </form>
 
 {{#js}}
-    /*
-    <script>*/
     require(["jquery"], function($) {
 
         $("#moodleForm select[data-selected]").each(function() {

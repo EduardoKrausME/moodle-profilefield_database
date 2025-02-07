@@ -38,26 +38,25 @@
 }}
 
 <form id="moodleForm" class="needs-validation" method="post" novalidate
-      enctype="multipart/form-data">
-    <input type="hidden" name="sesskey" value="{{config.sesskey}}">
+      enctype="multipart/form-data"
+      action="category-data.php?id={{data.id}}&category={{category.id}}">
+        <input type="hidden" name="sesskey" value="{{config.sesskey}}">
 
     <input type="hidden" name="data_id" value="{{data.id}}">
 
     {{#datas}}
-        {{#name}}
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="data{{id}}" class="form-label">{{name}}</label>
-                    <input type="text" class="form-control" id="data{{id}}" name="data{{id}}"
-                           required
-                           value="{{data}}">
-                    <div class="invalid-feedback">{{#str}}category_field-error,profilefield_database{{/str}}</div>
-                </div>
+        {{#field}}
+            <div class="mb-3">
+                <label for="data{{id}}" class="form-label">{{field}}</label>
+                <input type="text" class="form-control" id="data{{id}}" name="data{{id}}"
+                       required
+                       value="{{data}}">
+                <div class="invalid-feedback">{{#str}}category_field-error,profilefield_database{{/str}}</div>
             </div>
-        {{/name}}
+        {{/field}}
     {{/datas}}
 
-    <div class="col-md-6 mb-3">
+    <div class="">
         {{#data.id}}
             <button type="submit" class="btn btn-primary">{{#str}}save{{/str}}</button>
         {{/data.id}}
@@ -69,20 +68,17 @@
 </form>
 
 {{#js}}
-    /*
-    <script>*/
     require(["jquery"], function($) {
-
         $("#moodleForm").on("submit", function(e) {
             let isValid = true;
 
-            // Se não for válido, impede o envio do formulário
+            // If it is not valid, it prevents the form from being sent.
             if (!isValid) {
                 e.preventDefault();
             }
         });
 
-        // Remove a classe de erro ao digitar no campo
+        // Remove error class when typing in field
         $("#moodleForm input").on("input", function() {
             $(this).removeClass("is-invalid");
         });

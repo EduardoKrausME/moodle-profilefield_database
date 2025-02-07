@@ -98,50 +98,159 @@
             <th style="width: 100px; white-space: nowrap">&nbsp;</th>
         </tr>
         </thead>
-    <tbody>
+        <tbody>
         {{#datas}}
-        <tr>
-            <th class="header c0">{{data0}}</th>
-            <th class="header c0">{{data1}}</th>
-            {{#category.field2}}
-                <th class="header c0">{{data2}}</th>
-            {{/category.field2}}
-            {{#category.field3}}
-                <th class="header c0">{{data3}}</th>
-            {{/category.field3}}
-            {{#category.field4}}
-                <th class="header c0">{{data4}}</th>
-            {{/category.field4}}
-            {{#category.field5}}
-                <th class="header c0">{{data5}}</th>
-            {{/category.field5}}
-            {{#category.field6}}
-                <th class="header c0">{{data6}}</th>
-            {{/category.field6}}
-            {{#category.field7}}
-                <th class="header c0">{{data7}}</th>
-            {{/category.field7}}
-            {{#category.field8}}
-                <th class="header c0">{{data8}}</th>
-            {{/category.field8}}
-            {{#category.field9}}
-                <th class="header c0">{{data69}}</th>
-            {{/category.field9}}
-            <td style="width: 100px; white-space: nowrap">
-                <a href="category-data.php?id={{id}}"
-                class="btn btn-primary">{{#str}}edit{{/str}}</a>
+            <tr id="field-{{id}}">
+                <th class="header c0">{{data0}}</th>
+                <th class="header c1">{{data1}}</th>
+                {{#category.field2}}
+                    <th class="header c2">{{data2}}</th>
+                {{/category.field2}}
+                {{#category.field3}}
+                    <th class="header c3">{{data3}}</th>
+                {{/category.field3}}
+                {{#category.field4}}
+                    <th class="header c4">{{data4}}</th>
+                {{/category.field4}}
+                {{#category.field5}}
+                    <th class="header c5">{{data5}}</th>
+                {{/category.field5}}
+                {{#category.field6}}
+                    <th class="header c6">{{data6}}</th>
+                {{/category.field6}}
+                {{#category.field7}}
+                    <th class="header c7">{{data7}}</th>
+                {{/category.field7}}
+                {{#category.field8}}
+                    <th class="header c8">{{data8}}</th>
+                {{/category.field8}}
+                {{#category.field9}}
+                    <th class="header c9">{{data69}}</th>
+                {{/category.field9}}
+                <td style="width: 100px; white-space: nowrap">
+                    <a href="category-data.php?id={{id}}"
+                    data-dataid="{{id}}"
+                    class="btn btn-primary category-data-edit">{{#str}}edit{{/str}}</a>
 
-                <a href="category-data.php?id={{id}}&delete=1"
-                class="btn btn-danger">{{#str}}delete{{/str}}</a>
-            </td>
-        </tr>
-        </tbody>
+                    <a href="category-data.php?id={{id}}&delete=1"
+                    data-dataid="{{id}}"
+                    class="btn btn-danger category-data-delete">{{#str}}delete{{/str}}</a>
+                </td>
+            </tr>
         {{/datas}}
+        </tbody>
     </table>
 
     {{^num_datas}}
         <div class="alert alert-warning">{{#str}}data_none,profilefield_database{{/str}}</div>
     {{/num_datas}}
-    <p><a href="category-data.php?id=-1&category={{category.id}}"
-          class="btn btn-primary">{{#str}}add-new-data,profilefield_database{{/str}}</a></p>
+    <p>
+        <a href="category-data.php?id=-1&category={{category.id}}"
+        id="add-new-data"
+        class="btn btn-primary">{{#str}}add-new-data,profilefield_database{{/str}}</a>
+    </p>
 </div>
+
+{{#js}}
+    require(["jquery", "core/modal_factory", "core/templates"], function($, ModalFactory, Templates) {
+        $("#add-new-data").click(function() {
+            event.preventDefault();
+
+            var templatedata = {
+                "config": {
+                    "sesskey": "{{config.sesskey}}",
+                },
+                "category": {
+                    "id": "{{category.id}}",
+                    "name": "{{category.name}}",
+                },
+                "data": {
+                    "id": -1,
+                },
+                "datas": [
+                    {"id": 0, "data": "", "field": "{{category.field0}}", "type": "{{category.type0}}"},
+                    {"id": 1, "data": "", "field": "{{category.field1}}", "type": "{{category.type1}}"},
+                    {"id": 2, "data": "", "field": "{{category.field2}}", "type": "{{category.type2}}"},
+                    {"id": 3, "data": "", "field": "{{category.field3}}", "type": "{{category.type3}}"},
+                    {"id": 4, "data": "", "field": "{{category.field4}}", "type": "{{category.type4}}"},
+                    {"id": 5, "data": "", "field": "{{category.field5}}", "type": "{{category.type5}}"},
+                    {"id": 6, "data": "", "field": "{{category.field6}}", "type": "{{category.type6}}"},
+                    {"id": 7, "data": "", "field": "{{category.field7}}", "type": "{{category.type7}}"},
+                    {"id": 8, "data": "", "field": "{{category.field8}}", "type": "{{category.type8}}"},
+                    {"id": 9, "data": "", "field": "{{category.field9}}", "type": "{{category.type9}}"},
+                ],
+            };
+            console.log(templatedata);
+
+            ModalFactory.create({
+                title: "{{#str}}add-new-data,profilefield_database{{/str}}",
+                body: Templates.render("profilefield_database/category-data", templatedata),
+            }).then(function(modal) {
+                modal.show();
+            });
+        });
+
+        $(".category-data-edit").click(function() {
+            event.preventDefault();
+
+            var dataid = $(this).attr("data-dataid");
+
+            var templatedata = {
+                "config": {
+                    "sesskey": "{{config.sesskey}}",
+                },
+                "category": {
+                    "id": "{{category.id}}",
+                    "name": "{{category.name}}",
+                },
+                "data": {
+                    "id": dataid,
+                },
+                "datas": [
+                    {"id": 0, "data": $(`#field-${dataid} .c0`).text(), "field": "{{category.field0}}", "type": "{{category.type0}}"},
+                    {"id": 1, "data": $(`#field-${dataid} .c1`).text(), "field": "{{category.field1}}", "type": "{{category.type1}}"},
+                    {"id": 2, "data": $(`#field-${dataid} .c2`).text(), "field": "{{category.field2}}", "type": "{{category.type2}}"},
+                    {"id": 3, "data": $(`#field-${dataid} .c3`).text(), "field": "{{category.field3}}", "type": "{{category.type3}}"},
+                    {"id": 4, "data": $(`#field-${dataid} .c4`).text(), "field": "{{category.field4}}", "type": "{{category.type4}}"},
+                    {"id": 5, "data": $(`#field-${dataid} .c5`).text(), "field": "{{category.field5}}", "type": "{{category.type5}}"},
+                    {"id": 6, "data": $(`#field-${dataid} .c6`).text(), "field": "{{category.field6}}", "type": "{{category.type6}}"},
+                    {"id": 7, "data": $(`#field-${dataid} .c7`).text(), "field": "{{category.field7}}", "type": "{{category.type7}}"},
+                    {"id": 8, "data": $(`#field-${dataid} .c8`).text(), "field": "{{category.field8}}", "type": "{{category.type8}}"},
+                    {"id": 9, "data": $(`#field-${dataid} .c9`).text(), "field": "{{category.field9}}", "type": "{{category.type9}}"},
+                ],
+            };
+            console.log(templatedata);
+
+            ModalFactory.create({
+                title: $(`#field-${dataid} .c0`).text(),
+                body: Templates.render("profilefield_database/category-data", templatedata),
+            }).then(function(modal) {
+                modal.show();
+            });
+        });
+
+        $(".category-data-delete").click(function() {
+            event.preventDefault();
+
+            var dataid = $(this).attr("data-dataid");
+            var value0 = $(`#field-${dataid} .c0`).text();
+
+            ModalFactory.create({
+                title: "{{#str}}delete-data,profilefield_database{{/str}}",
+                body: `
+                    <p>{{#str}}confirm-delete-data, profilefield_database, {"name": "{{category.field0}}", "value": "${value0}"}{{/str}}</p>
+                    <div id="modal-footer" class="box py-3 modal-footer" style="margin: 0 -16px -16px;">
+                        <form method="post" action="category-data.php">
+                            <input type="hidden" name="id" value="${dataid}">
+                            <input type="hidden" name="delete" value="1">
+                            <input type="hidden" name="confirm" value="${dataid}-1">
+                            <input type="hidden" name="sesskey" value="{{config.sesskey}}">
+                            <button type="submit" class="btn btn-danger">{{#str}}delete{{/str}}</button>
+                        </form>
+                    </div>`,
+            }).then(function(modal) {
+                modal.show();
+            });
+        });
+    });
+{{/js}}

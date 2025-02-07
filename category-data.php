@@ -81,7 +81,9 @@ if (optional_param("delete", false, PARAM_TEXT)) {
             \core\output\notification::NOTIFY_ERROR);
     }
 
-    if (optional_param("confirm", "", PARAM_TEXT) == md5("{$id}" . sesskey())) {
+    $option1 = optional_param("confirm", "", PARAM_TEXT) == md5("{$id}" . sesskey());
+    $option2 = optional_param("confirm", "", PARAM_TEXT) == "{$id}-1";
+    if ($option1 || $option2) {
         require_sesskey();
 
         $DB->delete_records("profilefield_database_data", ["id" => $fielddata->id]);
@@ -134,19 +136,18 @@ echo $OUTPUT->header();
 
 $data = [
     "category" => $category,
-    "is_add" => $id > 0,
     "data" => $fielddata,
     "datas" => [
-        ["id" => 0, "data" => $fielddata->data0, "name" => $category->field0, "type" => $category->type0],
-        ["id" => 1, "data" => $fielddata->data1, "name" => $category->field1, "type" => $category->type1],
-        ["id" => 2, "data" => $fielddata->data2, "name" => $category->field2, "type" => $category->type2],
-        ["id" => 3, "data" => $fielddata->data3, "name" => $category->field3, "type" => $category->type3],
-        ["id" => 4, "data" => $fielddata->data4, "name" => $category->field4, "type" => $category->type4],
-        ["id" => 5, "data" => $fielddata->data5, "name" => $category->field5, "type" => $category->type5],
-        ["id" => 6, "data" => $fielddata->data6, "name" => $category->field6, "type" => $category->type6],
-        ["id" => 7, "data" => $fielddata->data7, "name" => $category->field7, "type" => $category->type7],
-        ["id" => 8, "data" => $fielddata->data8, "name" => $category->field8, "type" => $category->type8],
-        ["id" => 9, "data" => $fielddata->data9, "name" => $category->field9, "type" => $category->type9],
+        ["id" => 0, "data" => $fielddata->data0, "field" => $category->field0, "type" => $category->type0],
+        ["id" => 1, "data" => $fielddata->data1, "field" => $category->field1, "type" => $category->type1],
+        ["id" => 2, "data" => $fielddata->data2, "field" => $category->field2, "type" => $category->type2],
+        ["id" => 3, "data" => $fielddata->data3, "field" => $category->field3, "type" => $category->type3],
+        ["id" => 4, "data" => $fielddata->data4, "field" => $category->field4, "type" => $category->type4],
+        ["id" => 5, "data" => $fielddata->data5, "field" => $category->field5, "type" => $category->type5],
+        ["id" => 6, "data" => $fielddata->data6, "field" => $category->field6, "type" => $category->type6],
+        ["id" => 7, "data" => $fielddata->data7, "field" => $category->field7, "type" => $category->type7],
+        ["id" => 8, "data" => $fielddata->data8, "field" => $category->field8, "type" => $category->type8],
+        ["id" => 9, "data" => $fielddata->data9, "field" => $category->field9, "type" => $category->type9],
     ],
 ];
 echo $OUTPUT->render_from_template("profilefield_database/category-data", $data);
