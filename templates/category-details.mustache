@@ -180,13 +180,13 @@
                     {"id": 9, "data": "", "field": "{{category.field9}}", "type": "{{category.type9}}"},
                 ],
             };
-            console.log(templatedata);
 
             ModalFactory.create({
                 title: "{{#str}}add-new-data,profilefield_database{{/str}}",
                 body: Templates.render("profilefield_database/category-data", templatedata),
             }).then(function(modal) {
                 modal.show();
+                return modal;
             });
         });
 
@@ -219,13 +219,13 @@
                     {"id": 9, "data": $(`#field-${dataid} .c9`).text(), "field": "{{category.field9}}", "type": "{{category.type9}}"},
                 ],
             };
-            console.log(templatedata);
 
             ModalFactory.create({
                 title: $(`#field-${dataid} .c0`).text(),
                 body: Templates.render("profilefield_database/category-data", templatedata),
             }).then(function(modal) {
                 modal.show();
+                return modal;
             });
         });
 
@@ -250,6 +250,7 @@
                     </div>`,
             }).then(function(modal) {
                 modal.show();
+                return modal;
             });
         });
     });
