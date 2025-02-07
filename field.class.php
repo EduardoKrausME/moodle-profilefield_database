@@ -79,9 +79,18 @@ class profile_field_database extends profile_field_base {
      * Overwrites the base class method
      *
      * @param MoodleQuickForm $mform Moodle form instance
+     *
+     * @throws Exception
      */
     public function edit_field_add($mform) {
         $mform->addElement('select', $this->inputname, format_string($this->field->name), $this->options);
+
+        if (has_capability('moodle/site:config', context_system::instance())) {
+            global $CFG;
+            $url = "{$CFG->wwwroot}/user/profile/field/database/category-details.php?id={$this->field->param1}";
+            $mform->addElement('static', "{$this->inputname}_static", "",
+                "<a href='{$url}'>" . get_string("edit_values_fields", "profilefield_database") . "</a>");
+        }
     }
 
     /**
