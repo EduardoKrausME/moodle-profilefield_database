@@ -1,41 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="user/profile/field/database/db" VERSION="20240303"
-       COMMENT="XMLDB file for Moodle mod profilefield_database"
+<XMLDB PATH="user/profile/field/database/db" VERSION="20250207" COMMENT="XMLDB file for profilefield_database"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="../../../../../lib/xmldb/xmldb.xsd">
     <TABLES>
-        <TABLE NAME="profilefield_database_category" COMMENT="Store the data categorys">
+        <TABLE NAME="profilefield_database_category" COMMENT="Store the data categories">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
                 <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
-
                 <FIELD NAME="field0" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="type0" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
-
                 <FIELD NAME="field1" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="type1" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
-
                 <FIELD NAME="field2" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="type2" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
-
                 <FIELD NAME="field3" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="type3" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
-
                 <FIELD NAME="field4" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="type4" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
-
                 <FIELD NAME="field5" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="type5" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
-
                 <FIELD NAME="field6" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="type6" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
-
                 <FIELD NAME="field7" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="type7" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
-
                 <FIELD NAME="field8" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="type8" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
-
                 <FIELD NAME="field9" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="type9" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
             </FIELDS>
@@ -43,7 +32,6 @@
                 <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
             </KEYS>
         </TABLE>
-
         <TABLE NAME="profilefield_database_data" COMMENT="Store the data of the category fields">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
@@ -63,6 +51,5 @@
                 <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
             </KEYS>
         </TABLE>
-
     </TABLES>
 </XMLDB>
