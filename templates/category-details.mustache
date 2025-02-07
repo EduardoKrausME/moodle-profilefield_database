@@ -283,12 +283,14 @@
             event.preventDefault();
 
             var dataid = $(this).attr("data-dataid");
-            var value0 = $(`#field-${dataid} .c0`).text();
 
             ModalFactory.create({
                 title: "{{#str}}delete-data,profilefield_database{{/str}}",
                 body: `
-                    <p>{{#str}}confirm-delete-data, profilefield_database, {"name": "{{category.field0}}", "value": "${value0}"}{{/str}}</p>
+                    <p>{{#str}}confirm-delete-data, profilefield_database, {
+                            "name": "{{category.field0}}",
+                            "value": "${$(`#field-${dataid} .c0`).text()}"
+                        }{{/str}}</p>
                     <div id="modal-footer" class="box py-3 modal-footer" style="margin: 0 -16px -16px;">
                         <form method="post" action="category-data.php">
                             <input type="hidden" name="id" value="${dataid}">
@@ -305,6 +307,7 @@
         });
 
         function handleError(error) {
+            $("#maincontent").html(error);
         }
     });
 {{/js}}
