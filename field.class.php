@@ -83,12 +83,12 @@ class profile_field_database extends profile_field_base {
      * @throws Exception
      */
     public function edit_field_add($mform) {
-        $mform->addElement('select', $this->inputname, format_string($this->field->name), $this->options);
+        $mform->addElement("select", $this->inputname, format_string($this->field->name), $this->options);
 
-        if (has_capability('moodle/site:config', context_system::instance())) {
+        if (has_capability("moodle/site:config", context_system::instance())) {
             global $CFG;
             $url = "{$CFG->wwwroot}/user/profile/field/database/category-details.php?id={$this->field->param1}";
-            $mform->addElement('static', "{$this->inputname}_static", "",
+            $mform->addElement("static", "{$this->inputname}_static", "",
                 "<a href='{$url}'>" . get_string("edit_values_fields", "profilefield_database") . "</a>");
         }
     }
@@ -104,7 +104,7 @@ class profile_field_database extends profile_field_base {
         if (isset($this->options[$key]) || ($key = array_search($key, $this->options)) !== false) {
             $defaultkey = $key;
         } else {
-            $defaultkey = '';
+            $defaultkey = "";
         }
         $mform->setDefault($this->inputname, $defaultkey);
     }
@@ -148,7 +148,7 @@ class profile_field_database extends profile_field_base {
         if (!$mform->elementExists($this->inputname)) {
             return;
         }
-        if ($this->is_locked() && !has_capability('moodle/user:update', context_system::instance())) {
+        if ($this->is_locked() && !has_capability("moodle/user:update", context_system::instance())) {
             $mform->hardFreeze($this->inputname);
             $mform->setConstant($this->inputname, format_string($this->datakey));
         }
@@ -197,7 +197,7 @@ class profile_field_database extends profile_field_base {
         if (isset($this->field->param1) && !empty($this->options)) {
             // Remove "Choose" option to make it consisten with the rest of the data.
             if (!empty($this->field->required)) {
-                unset($this->options['']);
+                unset($this->options[""]);
             }
         }
 
