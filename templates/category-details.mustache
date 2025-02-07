@@ -187,7 +187,7 @@
             }).then(function(modal) {
                 modal.show();
                 return modal;
-            });
+            }).catch(handleError);
         });
 
         $(".category-data-edit").click(function() {
@@ -207,16 +207,66 @@
                     "id": dataid,
                 },
                 "datas": [
-                    {"id": 0, "data": $(`#field-${dataid} .c0`).text(), "field": "{{category.field0}}", "type": "{{category.type0}}"},
-                    {"id": 1, "data": $(`#field-${dataid} .c1`).text(), "field": "{{category.field1}}", "type": "{{category.type1}}"},
-                    {"id": 2, "data": $(`#field-${dataid} .c2`).text(), "field": "{{category.field2}}", "type": "{{category.type2}}"},
-                    {"id": 3, "data": $(`#field-${dataid} .c3`).text(), "field": "{{category.field3}}", "type": "{{category.type3}}"},
-                    {"id": 4, "data": $(`#field-${dataid} .c4`).text(), "field": "{{category.field4}}", "type": "{{category.type4}}"},
-                    {"id": 5, "data": $(`#field-${dataid} .c5`).text(), "field": "{{category.field5}}", "type": "{{category.type5}}"},
-                    {"id": 6, "data": $(`#field-${dataid} .c6`).text(), "field": "{{category.field6}}", "type": "{{category.type6}}"},
-                    {"id": 7, "data": $(`#field-${dataid} .c7`).text(), "field": "{{category.field7}}", "type": "{{category.type7}}"},
-                    {"id": 8, "data": $(`#field-${dataid} .c8`).text(), "field": "{{category.field8}}", "type": "{{category.type8}}"},
-                    {"id": 9, "data": $(`#field-${dataid} .c9`).text(), "field": "{{category.field9}}", "type": "{{category.type9}}"},
+                    {
+                        "id": 0,
+                        "data": $(`#field-${dataid} .c0`).text(),
+                        "field": "{{category.field0}}",
+                        "type": "{{category.type0}}"
+                    },
+                    {
+                        "id": 1,
+                        "data": $(`#field-${dataid} .c1`).text(),
+                        "field": "{{category.field1}}",
+                        "type": "{{category.type1}}"
+                    },
+                    {
+                        "id": 2,
+                        "data": $(`#field-${dataid} .c2`).text(),
+                        "field": "{{category.field2}}",
+                        "type": "{{category.type2}}"
+                    },
+                    {
+                        "id": 3,
+                        "data": $(`#field-${dataid} .c3`).text(),
+                        "field": "{{category.field3}}",
+                        "type": "{{category.type3}}"
+                    },
+                    {
+                        "id": 4,
+                        "data": $(`#field-${dataid} .c4`).text(),
+                        "field": "{{category.field4}}",
+                        "type": "{{category.type4}}"
+                    },
+                    {
+                        "id": 5,
+                        "data": $(`#field-${dataid} .c5`).text(),
+                        "field": "{{category.field5}}",
+                        "type": "{{category.type5}}"
+                    },
+                    {
+                        "id": 6,
+                        "data": $(`#field-${dataid} .c6`).text(),
+                        "field": "{{category.field6}}",
+                        "type": "{{category.type6}}"
+                    },
+                    {
+                        "id": 7,
+                        "data": $(`#field-${dataid} .c7`).text(),
+                        "field": "{{category.field7}}",
+                        "type": "{{category.type7}}"
+                    },
+                    {
+                        "id": 8,
+                        "data": $(`#field-${dataid} .c8`).text(),
+                        "field": "{{category.field8}}",
+                        "type": "{{category.type8}}"
+                    },
+                    {
+                        "id": 9,
+                        "data": $(`#field-${dataid} .c9`).text(),
+                        "field": "{{category.field9}}",
+                        "type": "{{category.type9}}"
+                    },
                 ],
             };
 
@@ -226,7 +276,7 @@
             }).then(function(modal) {
                 modal.show();
                 return modal;
-            });
+            }).catch(handleError);
         });
 
         $(".category-data-delete").click(function() {
@@ -251,7 +301,10 @@
             }).then(function(modal) {
                 modal.show();
                 return modal;
-            });
+            }).catch(handleError);
         });
+
+        function handleError(error) {
+        }
     });
 {{/js}}
