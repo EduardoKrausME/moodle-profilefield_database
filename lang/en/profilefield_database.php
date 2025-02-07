@@ -50,7 +50,7 @@ $string['delete-category-usedata'] = 'This category is being used in the field <
 $string['delete-data'] = 'Delete the record';
 $string['delete-data-usedata'] = 'This record is being used by user <a href="{$a->wwwroot}/user/profile.php?id=?id={$a->id}" target="_blank">{$a->name}</a>';
 $string['delete-success'] = 'Category successfully deleted';
-$string['edit_values_fields']='Edit values ​​of these Fields';
+$string['edit_values_fields'] = 'Edit values ​​of these Fields';
 $string['field_type'] = 'Field type';
 $string['field_type-date'] = 'Data will be Date';
 $string['field_type-info'] = 'Select the field type to be used';
