@@ -102,7 +102,7 @@ if (optional_param("delete", false, PARAM_TEXT)) {
         ["id" => $id, "delete" => 1, "confirm" => md5("{$id}" . sesskey()), "sesskey" => sesskey()]);
     $continuebutton = new single_button($continueurl, get_string("delete"), "post", single_button::BUTTON_DANGER);
     echo $OUTPUT->confirm(
-        get_string("confirm-delete-data", "profilefield_database", ["name" => $category->field0, "value" => $fielddata->data0]),
+        get_string("confirm-delete-data", "profilefield_database", $fielddata->data0),
         $continuebutton,
         $cancelurl);
 
