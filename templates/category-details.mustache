@@ -152,6 +152,8 @@
 </div>
 
 {{#js}}
+    /*
+    <script>*/
     require(["jquery", "core/modal_factory", "core/templates"], function($, ModalFactory, Templates) {
         $("#add-new-data").click(function() {
             event.preventDefault();
@@ -283,15 +285,17 @@
             event.preventDefault();
 
             var dataid = $(this).attr("data-dataid");
+            var confirm = "{{#str}}confirm-delete-data, profilefield_database,value0{{/str}}";
+            confirm = confirm.replace("value0", $(`#field-${dataid} .c0`).text());
 
             ModalFactory.create({
                 title: "{{#str}}delete-data,profilefield_database{{/str}}",
                 body: `
-                    <p>{{#str}}confirm-delete-data, profilefield_database, ${$(`#field-${dataid} .c0`).text()} {{/str}}</p>
+                    <p>${confirm}</p>
                     <div id="modal-footer" class="box py-3 modal-footer" style="margin: 0 -16px -16px;">
                         <form method="post" action="category-data.php">
-                            <input type="hidden" name="id" value="${dataid}">
-                            <input type="hidden" name="delete" value="1">
+                            <input type="hidden" name="id"      value="${dataid}">
+                            <input type="hidden" name="delete"  value="1">
                             <input type="hidden" name="confirm" value="${dataid}-1">
                             <input type="hidden" name="sesskey" value="{{config.sesskey}}">
                             <button type="submit" class="btn btn-danger">{{#str}}delete{{/str}}</button>
