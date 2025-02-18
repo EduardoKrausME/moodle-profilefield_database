@@ -25,11 +25,11 @@
 namespace profilefield_database\vo;
 
 /**
- * Class profilefield_database_category
+ * Class profilefield_database_cat
  *
  * @package profilefield_database\vo
  */
-class profilefield_database_category {
+class profilefield_database_cat {
 
     /** @var int */
     public $id;

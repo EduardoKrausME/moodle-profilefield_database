@@ -23,16 +23,16 @@
  */
 
 use profilefield_database\bi\kopere_bi;
-use profilefield_database\vo\profilefield_database_category;
+use profilefield_database\vo\profilefield_database_cat;
 
 require_once("../../../../config.php");
 
 $id = required_param("id", PARAM_INT);
 
 if ($id == -1) {
-    $category = new profilefield_database_category();
+    $category = new profilefield_database_cat();
 } else {
-    $category = $DB->get_record("profilefield_database_category", ["id" => $id], "*", MUST_EXIST);
+    $category = $DB->get_record("profilefield_database_cat", ["id" => $id], "*", MUST_EXIST);
 }
 
 $context = context_system::instance();
@@ -83,7 +83,7 @@ if (optional_param("delete", false, PARAM_TEXT)) {
 
         kopere_bi::delete_category($category);
 
-        $DB->delete_records("profilefield_database_category", ["id" => $category->id]);
+        $DB->delete_records("profilefield_database_cat", ["id" => $category->id]);
         redirect(new moodle_url("/user/profile/field/database/category.php"),
             get_string("delete-success", "profilefield_database"), null,
             \core\output\notification::NOTIFY_SUCCESS);
@@ -118,12 +118,12 @@ if (optional_param("category_name", false, PARAM_TEXT)) {
 
     if (isset($category->field0[2]) && isset($category->field1[2])) {
         if ($id == -1) {
-            $category->id = $DB->insert_record("profilefield_database_category", $category);
+            $category->id = $DB->insert_record("profilefield_database_cat", $category);
 
             $bi->set_category($category);
             $bi->create_report();
         } else {
-            $DB->update_record("profilefield_database_category", $category);
+            $DB->update_record("profilefield_database_cat", $category);
 
             $bi->set_category($category);
             $bi->create_report();

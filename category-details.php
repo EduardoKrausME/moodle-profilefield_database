@@ -26,7 +26,7 @@ require_once("../../../../config.php");
 
 $id = required_param("id", PARAM_INT);
 
-$category = $DB->get_record("profilefield_database_category", ["id" => $id], "*", MUST_EXIST);
+$category = $DB->get_record("profilefield_database_cat", ["id" => $id], "*", MUST_EXIST);
 $profilefielddatabasedata = $DB->get_records("profilefield_database_data", ["categoryid" => $category->id]);
 
 $context = context_system::instance();

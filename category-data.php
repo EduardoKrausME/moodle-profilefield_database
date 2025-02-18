@@ -22,7 +22,7 @@
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use profilefield_database\vo\profilefield_database_category;
+use profilefield_database\vo\profilefield_database_cat;
 use profilefield_database\vo\profilefield_database_data;
 
 require_once("../../../../config.php");
@@ -33,14 +33,14 @@ if ($id == -1) {
     $fielddata = new profilefield_database_data(-1);
 
     $categoryid = required_param("category", PARAM_INT);
-    /** @var profilefield_database_category $category */
-    $category = $DB->get_record("profilefield_database_category", ["id" => $categoryid], "*", MUST_EXIST);
+    /** @var profilefield_database_cat $category */
+    $category = $DB->get_record("profilefield_database_cat", ["id" => $categoryid], "*", MUST_EXIST);
 } else {
     /** @var profilefield_database_data $fielddata */
     $fielddata = $DB->get_record("profilefield_database_data", ["id" => $id], "*", MUST_EXIST);
 
-    /** @var profilefield_database_category $category */
-    $category = $DB->get_record("profilefield_database_category", ["id" => $fielddata->categoryid], "*", MUST_EXIST);
+    /** @var profilefield_database_cat $category */
+    $category = $DB->get_record("profilefield_database_cat", ["id" => $fielddata->categoryid], "*", MUST_EXIST);
 }
 
 $context = context_system::instance();

@@ -40,7 +40,7 @@ require_capability("profilefield/database:addinstance", $context);
 
 echo $OUTPUT->header();
 
-$categorys = $DB->get_records("profilefield_database_category");
+$categorys = $DB->get_records("profilefield_database_cat");
 if (!$categorys) {
     $data = [];
 } else {

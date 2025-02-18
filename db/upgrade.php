@@ -30,5 +30,17 @@
  * @return bool always true
  */
 function xmldb_profilefield_database_upgrade($oldversion) {
+    global $DB;
+
+    $dbman = $DB->get_manager();
+
+    if ($oldversion < 2025021800) {
+        $table = new xmldb_table("profilefield_database_category");
+        if ($dbman->table_exists($table)) {
+            $dbman->rename_table($table, "profilefield_database_cat");
+        }
+
+        upgrade_plugin_savepoint(true, 2025021800, "profilefield", "database");
+    }
     return true;
 }

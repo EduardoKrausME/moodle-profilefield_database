@@ -22,7 +22,7 @@
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use profilefield_database\vo\profilefield_database_category;
+use profilefield_database\vo\profilefield_database_cat;
 
 /**
  * Class profile_define_database
@@ -45,8 +45,8 @@ class profile_define_database extends profile_define_base {
 
         // Associated db field.
         $dbs = [];
-        $categorys = $DB->get_records("profilefield_database_category", [], "name ASC", "id,name");
-        /** @var profilefield_database_category $category */
+        $categorys = $DB->get_records("profilefield_database_cat", [], "name ASC", "id,name");
+        /** @var profilefield_database_cat $category */
         foreach ($categorys as $category) {
             $dbs[$category->id] = $category->name;
         }
@@ -76,7 +76,7 @@ class profile_define_database extends profile_define_base {
 
         $errors = [];
         if (!empty($data->param1)) {
-            $category = $DB->get_record("profilefield_database_category", ["id" => $data->param1], "id");
+            $category = $DB->get_record("profilefield_database_cat", ["id" => $data->param1], "id");
             if (!$category) {
                 $errors["param1"] = get_string("missing-value", "profilefield_database");
             }

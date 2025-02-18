@@ -27,7 +27,7 @@ namespace profilefield_database\bi;
 use local_kopere_bi\vo\local_kopere_bi_block;
 use local_kopere_bi\vo\local_kopere_bi_cat;
 use local_kopere_bi\vo\local_kopere_bi_page;
-use profilefield_database\vo\profilefield_database_category;
+use profilefield_database\vo\profilefield_database_cat;
 
 /**
  * Class kopere_bi
@@ -72,7 +72,7 @@ class kopere_bi {
         }
     }
 
-    /** @var profilefield_database_category */
+    /** @var profilefield_database_cat */
     public $category;
 
     /** @var local_kopere_bi_page $page */
@@ -84,7 +84,7 @@ class kopere_bi {
     /**
      * Function set_category
      *
-     * @param profilefield_database_category $category
+     * @param profilefield_database_cat $category
      *
      * @throws \coding_exception
      * @throws \dml_exception
@@ -124,7 +124,7 @@ class kopere_bi {
     /**
      * Function delete_category
      *
-     * @param profilefield_database_category $category
+     * @param profilefield_database_cat $category
      *
      * @throws \dml_exception
      */

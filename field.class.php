@@ -22,7 +22,7 @@
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use profilefield_database\vo\profilefield_database_category;
+use profilefield_database\vo\profilefield_database_cat;
 use profilefield_database\vo\profilefield_database_data;
 
 /**
@@ -215,8 +215,8 @@ class profile_field_database extends profile_field_base {
 
         /** @var profilefield_database_data $fielddata */
         $fielddata = $DB->get_record("profilefield_database_data", ["id" => $this->data]);
-        /** @var profilefield_database_category $category */
-        $category = $DB->get_record("profilefield_database_category", ["id" => $fielddata->categoryid]);
+        /** @var profilefield_database_cat $category */
+        $category = $DB->get_record("profilefield_database_cat", ["id" => $fielddata->categoryid]);
 
         $data = [
             "fields" => [
