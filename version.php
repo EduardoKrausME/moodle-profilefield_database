@@ -24,10 +24,10 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2025021800;
+$plugin->version = 2025021900;
 $plugin->requires = 2022112800;
 $plugin->component = "profilefield_database";
-$plugin->release = "1.1.1";
+$plugin->release = "1.1.2";
 $plugin->maturity = MATURITY_STABLE;
 
 $plugin->dependencies = [
