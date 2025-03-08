@@ -303,8 +303,8 @@ class kopere_bi {
                                           AND uif.param1 = {$this->category->id}
   JOIN mdl_profilefield_database_data pdb ON pdb.id      = uid.data
   JOIN mdl_user                       u   ON u.id        = uid.userid";
-            }else if ($DB->get_dbfamily() === 'postgres') {
-                $sqlreport=
+            } else if ($DB->get_dbfamily() === 'postgres') {
+                $sqlreport =
                     "SELECT DISTINCT u.id AS u_id,
        u.firstname,
        u.lastname,
