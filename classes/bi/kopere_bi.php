@@ -301,7 +301,7 @@ class kopere_bi {
   FROM mdl_user_info_data             uid
   JOIN mdl_user_info_field            uif ON uid.fieldid =  uif.id
                                           AND uif.param1 = {$this->category->id}
-  JOIN mdl_profilefield_database_data pdb ON pdb.id      = uid.data                                       
+  JOIN mdl_profilefield_database_data pdb ON pdb.id      = uid.data
   JOIN mdl_user                       u   ON u.id        = uid.userid";
             }else if ($DB->get_dbfamily() === 'postgres') {
                 $sqlreport=
@@ -317,10 +317,10 @@ class kopere_bi {
        u.timecreated,
        pdb.*
   FROM mdl_user_info_data             uid
-  JOIN mdl_user_info_field            uif ON uid.fieldid::BIGINT =  uif.id::BIGINT 
-                                          AND uif.param1         ~ '^[0-9]+$' 
+  JOIN mdl_user_info_field            uif ON uid.fieldid::BIGINT =  uif.id::BIGINT
+                                          AND uif.param1         ~ '^[0-9]+$'
                                           AND uif.param1::BIGINT = {$this->category->id}
-  JOIN mdl_profilefield_database_data pdb ON pdb.id::BIGINT      = uid.data::BIGINT                                        
+  JOIN mdl_profilefield_database_data pdb ON pdb.id::BIGINT      = uid.data::BIGINT
   JOIN mdl_user                       u   ON u.id::BIGINT        = uid.userid::BIGINT";
             }
             $element = (object)[
