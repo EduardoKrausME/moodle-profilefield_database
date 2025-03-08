@@ -285,6 +285,44 @@ class kopere_bi {
 
         $element = $DB->get_record("local_kopere_bi_element", ["refkey" => "profilefield_database_element_{$this->category->id}"]);
         if (!$element) {
+            if ($DB->get_dbfamily() == 'mysql') {
+                $sqlreport =
+                    "SELECT DISTINCT u.id AS u_id,
+       u.firstname,
+       u.lastname,
+       u.email,
+       u.city,
+       u.country,
+       u.firstaccess,
+       u.lastaccess,
+       u.lastlogin,
+       u.timecreated,
+       pdb.*
+  FROM mdl_user_info_data             uid
+  JOIN mdl_user_info_field            uif ON uid.fieldid =  uif.id
+                                          AND uif.param1 = {$this->category->id}
+  JOIN mdl_profilefield_database_data pdb ON pdb.id      = uid.data                                       
+  JOIN mdl_user                       u   ON u.id        = uid.userid";
+            }else if ($DB->get_dbfamily() === 'postgres') {
+                $sqlreport=
+                    "SELECT DISTINCT u.id AS u_id,
+       u.firstname,
+       u.lastname,
+       u.email,
+       u.city,
+       u.country,
+       u.firstaccess,
+       u.lastaccess,
+       u.lastlogin,
+       u.timecreated,
+       pdb.*
+  FROM mdl_user_info_data             uid
+  JOIN mdl_user_info_field            uif ON uid.fieldid::BIGINT =  uif.id::BIGINT 
+                                          AND uif.param1         ~ '^[0-9]+$' 
+                                          AND uif.param1::BIGINT = {$this->category->id}
+  JOIN mdl_profilefield_database_data pdb ON pdb.id::BIGINT      = uid.data::BIGINT                                        
+  JOIN mdl_user                       u   ON u.id::BIGINT        = uid.userid::BIGINT";
+            }
             $element = (object)[
                 "refkey" => "profilefield_database_element_{$this->category->id}",
                 "title" => get_string("report_category_title", "profilefield_database", $this->category->name),
@@ -298,23 +336,7 @@ class kopere_bi {
                 "cache" => "6h",
                 "reload" => "2h",
                 "time" => time(),
-                "commandsql" => "SELECT u.id AS u_id,
-       u.firstname,
-       u.lastname,
-       u.email,
-       u.city,
-       u.country,
-       u.firstaccess,
-       u.lastaccess,
-       u.lastlogin,
-       u.timecreated,
-       pdd.*
-  FROM mdl_user_info_data             uid
-  JOIN mdl_user                       u   ON u.id = uid.userid
-  JOIN mdl_profilefield_database_data pdd ON pdd.id = uid.data
- WHERE uid.fieldid IN(
-            SELECT id FROM mdl_user_info_field WHERE param1 = {$this->category->id}
-        )",
+                "commandsql" => $sqlreport,
                 "info" => json_encode($info, JSON_PRETTY_PRINT),
             ];
             $DB->insert_record("local_kopere_bi_element", $element);
