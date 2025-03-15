@@ -70,7 +70,7 @@ class profile_define_database extends profile_define_base {
      * @throws dml_exception
      */
     public function define_validate_specific($data, $files) {
-        global $DB;
+        global $DB, $CFG;
 
         $data = (object)$data;
 
@@ -78,7 +78,7 @@ class profile_define_database extends profile_define_base {
         if (!empty($data->param1)) {
             $category = $DB->get_record("profilefield_database_cat", ["id" => $data->param1], "id");
             if (!$category) {
-                $errors["param1"] = get_string("missing-value", "profilefield_database");
+                $errors["param1"] = get_string("missing-value-link", "profilefield_database", $CFG->wwwroot);
             }
         }
         return $errors;
