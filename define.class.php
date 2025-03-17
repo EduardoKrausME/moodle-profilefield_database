@@ -51,8 +51,7 @@ class profile_define_database extends profile_define_base {
             $dbs[$category->id] = $category->name;
         }
 
-        $mform->addElement('html',
-            '<div class="alert alert-warning">' . get_string("manage-category-link", "profilefield_database", $CFG->wwwroot) . '</div>');
+        $mform->addElement('html', get_string("manage-category-link", "profilefield_database", $CFG->wwwroot) );
 
         $mform->addElement("select", "param1", get_string("select-category", "profilefield_database"), $dbs);
         $mform->setType('param1', PARAM_INT);

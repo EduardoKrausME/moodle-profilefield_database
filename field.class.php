@@ -233,7 +233,7 @@ class profile_field_database extends profile_field_base {
                 ["visible" => isset($fielddata->data8[3]), "data" => $fielddata->data8, "name" => $category->field8],
                 ["visible" => isset($fielddata->data9[3]), "data" => $fielddata->data9, "name" => $category->field9],
             ],
-            "is_admin"=>has_capability("moodle/user:update", context_system::instance()),
+            "is_admin" => has_capability("moodle/user:update", context_system::instance()),
             "message_admin" => get_string("manage-category-link", "profilefield_database", $CFG->wwwroot),
         ];
         return $OUTPUT->render_from_template("profilefield_database/data-display", $data);

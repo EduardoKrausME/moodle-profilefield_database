@@ -56,7 +56,7 @@ $string['field_type-date'] = 'Data will be Date';
 $string['field_type-info'] = 'Select the field type to be used';
 $string['field_type-int'] = 'Data will be Number';
 $string['field_type-text'] = 'Data will be text';
-$string['manage-category-link'] = 'To select a category, you must first create and manage categories. You can do this by accessing the area <a href="{$a}/user/profile/field/database/category.php">All categories</a>.';
+$string['manage-category-link'] = '<div class="alert alert-warning">To select a category, you must first create and manage categories. You can do this by accessing the area <a href="{$a}/user/profile/field/database/category.php">All categories</a>.</div>';
 $string['missing-value-link'] = 'Field "Select category" needs to be a valid value in <a href="{$a}/user/profile/field/database/category.php">All categories</a>.';
 $string['new-category'] = 'New category';
 $string['new-data'] = 'New record';
