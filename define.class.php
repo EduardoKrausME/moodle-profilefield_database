@@ -41,7 +41,7 @@ class profile_define_database extends profile_define_base {
      * @throws dml_exception
      */
     public function define_form_specific($mform) {
-        global $DB;
+        global $DB, $CFG;
 
         // Associated db field.
         $dbs = [];
@@ -52,7 +52,7 @@ class profile_define_database extends profile_define_base {
         }
 
         $mform->addElement('html',
-            '<div class="alert alert-warning">' . get_string("manage-category", "profilefield_database") . '</div>');
+            '<div class="alert alert-warning">' . get_string("manage-category-link", "profilefield_database", $CFG->wwwroot) . '</div>');
 
         $mform->addElement("select", "param1", get_string("select-category", "profilefield_database"), $dbs);
         $mform->setType('param1', PARAM_INT);

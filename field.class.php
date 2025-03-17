@@ -51,6 +51,7 @@ class profile_field_database extends profile_field_base {
      * @param object $fielddata
      *
      * @throws dml_exception
+     * @throws coding_exception
      */
     public function __construct($fieldid = 0, $userid = 0, $fielddata = null) {
         global $DB;
@@ -58,14 +59,15 @@ class profile_field_database extends profile_field_base {
         // First call parent constructor.
         parent::__construct($fieldid, $userid, $fielddata);
 
+        $this->options[] = "..:: " . get_string("select") . " ::..";
+
         // Param 1 for menu type is the options.
         if (isset($this->field->param1)) {
-
             $fielddatas = $DB->get_records("profilefield_database_data",
-                ["categoryid" => $this->field->param1], "data0 ASC", "id,data0");
+                ["categoryid" => $this->field->param1], "data0 ASC, data1 ASC", "id,data0,data1");
             /** @var profilefield_database_data $fielddata */
             foreach ($fielddatas as $fielddata) {
-                $this->options[$fielddata->id] = $fielddata->data0;
+                $this->options[$fielddata->id] = "{$fielddata->data0} ({$fielddata->data1})";
             }
         } else {
             $this->options = [];
@@ -211,7 +213,7 @@ class profile_field_database extends profile_field_base {
      * @throws dml_exception
      */
     public function display_data() {
-        global $DB, $OUTPUT;
+        global $DB, $OUTPUT, $CFG;
 
         /** @var profilefield_database_data $fielddata */
         $fielddata = $DB->get_record("profilefield_database_data", ["id" => $this->data]);
@@ -231,6 +233,8 @@ class profile_field_database extends profile_field_base {
                 ["visible" => isset($fielddata->data8[3]), "data" => $fielddata->data8, "name" => $category->field8],
                 ["visible" => isset($fielddata->data9[3]), "data" => $fielddata->data9, "name" => $category->field9],
             ],
+            "is_admin"=>has_capability("moodle/user:update", context_system::instance()),
+            "message_admin" => get_string("manage-category-link", "profilefield_database", $CFG->wwwroot),
         ];
         return $OUTPUT->render_from_template("profilefield_database/data-display", $data);
     }

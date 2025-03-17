@@ -45,3 +45,7 @@
         {{/visible}}
     {{/fields}}
 </table>
+
+{{#is_admin}}
+    <div class="alert alert-warning">{{{message_admin}}}</div>
+{{/is_admin}}
