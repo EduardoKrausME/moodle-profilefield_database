@@ -211,6 +211,7 @@ class profile_field_database extends profile_field_base {
      *
      * @return string HTML.
      * @throws dml_exception
+     * @throws coding_exception
      */
     public function display_data() {
         global $DB, $OUTPUT, $CFG;
