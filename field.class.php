@@ -220,6 +220,11 @@ class profile_field_database extends profile_field_base {
         /** @var profilefield_database_cat $category */
         $category = $DB->get_record("profilefield_database_cat", ["id" => $fielddata->categoryid]);
 
+        $messageadmin = "
+            <a class='alert alert-warning' 
+               href='{$CFG->wwwroot}/user/profile/field/database/category.php'
+               target='_blank'>" . get_string("edit_values_fields", "profilefield_database",) . "</a>";
+
         $data = [
             "fields" => [
                 ["visible" => isset($fielddata->data0[3]), "data" => $fielddata->data0, "name" => $category->field0],
@@ -234,7 +239,7 @@ class profile_field_database extends profile_field_base {
                 ["visible" => isset($fielddata->data9[3]), "data" => $fielddata->data9, "name" => $category->field9],
             ],
             "is_admin" => has_capability("moodle/user:update", context_system::instance()),
-            "message_admin" => get_string("manage-category-link", "profilefield_database", $CFG->wwwroot),
+            "message_admin" => $messageadmin,
         ];
         return $OUTPUT->render_from_template("profilefield_database/data-display", $data);
     }
