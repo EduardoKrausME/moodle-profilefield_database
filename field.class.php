@@ -221,9 +221,9 @@ class profile_field_database extends profile_field_base {
         $category = $DB->get_record("profilefield_database_cat", ["id" => $fielddata->categoryid]);
 
         $messageadmin = "
-            <a class='alert alert-warning' 
+            <a class='alert alert-warning'
                href='{$CFG->wwwroot}/user/profile/field/database/category.php'
-               target='_blank'>" . get_string("edit_values_fields", "profilefield_database",) . "</a>";
+               target='_blank'>" . get_string("edit_values_fields", "profilefield_database") . "</a>";
 
         $data = [
             "fields" => [
