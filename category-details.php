@@ -55,4 +55,3 @@ $data = [
 echo $OUTPUT->render_from_template("profilefield_database/category-details", $data);
 
 echo $OUTPUT->footer();
-
