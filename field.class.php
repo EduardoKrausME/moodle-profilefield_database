@@ -216,30 +216,46 @@ class profile_field_database extends profile_field_base {
     public function display_data() {
         global $DB, $OUTPUT, $CFG;
 
+        $messageadmin = "";
+        if (!!0 && has_capability("moodle/user:update", context_system::instance())) {
+            $editvaluesfields = get_string("edit_values_fields", "profilefield_database");
+            $messageadmin = "
+                <a class='alert alert-warning'
+                   href='{$CFG->wwwroot}/user/profile/field/database/category.php'
+                   target='_blank'>{$editvaluesfields}</a>";
+        }
+        $data = [
+            "fields" => [
+                ["visible" => true, "field" => "", "data" => get_string("empty_value", "profilefield_database")],
+            ],
+            "message_admin" => $messageadmin,
+        ];
+
         /** @var profilefield_database_data $fielddata */
         $fielddata = $DB->get_record("profilefield_database_data", ["id" => $this->data]);
+        if (!$fielddata) {
+            return $OUTPUT->render_from_template("profilefield_database/data-display", $data);
+        }
+
         /** @var profilefield_database_cat $category */
         $category = $DB->get_record("profilefield_database_cat", ["id" => $fielddata->categoryid]);
-
-        $messageadmin = "
-            <a class='alert alert-warning'
-               href='{$CFG->wwwroot}/user/profile/field/database/category.php'
-               target='_blank'>" . get_string("edit_values_fields", "profilefield_database") . "</a>";
+        if (!$category) {
+            return $OUTPUT->render_from_template("profilefield_database/data-display", $data);
+        }
 
         $data = [
             "fields" => [
-                ["visible" => isset($fielddata->data0[3]), "data" => $fielddata->data0, "name" => $category->field0],
-                ["visible" => isset($fielddata->data1[3]), "data" => $fielddata->data1, "name" => $category->field1],
-                ["visible" => isset($fielddata->data2[3]), "data" => $fielddata->data2, "name" => $category->field2],
-                ["visible" => isset($fielddata->data3[3]), "data" => $fielddata->data3, "name" => $category->field3],
-                ["visible" => isset($fielddata->data4[3]), "data" => $fielddata->data4, "name" => $category->field4],
-                ["visible" => isset($fielddata->data5[3]), "data" => $fielddata->data5, "name" => $category->field5],
-                ["visible" => isset($fielddata->data6[3]), "data" => $fielddata->data6, "name" => $category->field6],
-                ["visible" => isset($fielddata->data7[3]), "data" => $fielddata->data7, "name" => $category->field7],
-                ["visible" => isset($fielddata->data8[3]), "data" => $fielddata->data8, "name" => $category->field8],
-                ["visible" => isset($fielddata->data9[3]), "data" => $fielddata->data9, "name" => $category->field9],
+                ["visible" => isset($fielddata->data0[3]), "field" => $category->field0, "data" => $fielddata->data0],
+                ["visible" => isset($fielddata->data1[3]), "field" => $category->field1, "data" => $fielddata->data1],
+                ["visible" => isset($fielddata->data2[3]), "field" => $category->field2, "data" => $fielddata->data2],
+                ["visible" => isset($fielddata->data3[3]), "field" => $category->field3, "data" => $fielddata->data3],
+                ["visible" => isset($fielddata->data4[3]), "field" => $category->field4, "data" => $fielddata->data4],
+                ["visible" => isset($fielddata->data5[3]), "field" => $category->field5, "data" => $fielddata->data5],
+                ["visible" => isset($fielddata->data6[3]), "field" => $category->field6, "data" => $fielddata->data6],
+                ["visible" => isset($fielddata->data7[3]), "field" => $category->field7, "data" => $fielddata->data7],
+                ["visible" => isset($fielddata->data8[3]), "field" => $category->field8, "data" => $fielddata->data8],
+                ["visible" => isset($fielddata->data9[3]), "field" => $category->field9, "data" => $fielddata->data9],
             ],
-            "is_admin" => has_capability("moodle/user:update", context_system::instance()),
             "message_admin" => $messageadmin,
         ];
         return $OUTPUT->render_from_template("profilefield_database/data-display", $data);
