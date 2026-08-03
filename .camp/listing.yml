@@ -1,0 +1,23 @@
+# (RFC §4.1). Authors update their listing with an ordinary commit; camp
+# ingests and hash-pins it at each tagged release. Listing for profilefield_database.
+
+name: "User Field DB"
+summary: "Create profile fields connected to information stored in the database."
+description: |
+  Create profile fields connected to information stored in the database.
+
+  This plugin allows Moodle administrators to create user profile fields filled with data from a database table. By using this plugin, administrators can create data tables that students can select from and automatically generate reports in Kopere BI.
+
+  Key capabilities:
+  - Create user profile fields linked to database tables.
+  - Define categories of data stored in the database.
+  - Allow users to select predefined data when editing their profile.
+
+  Supported Moodle versions in the supplied plugin list: 3.9 - 5.0.
+
+labels:
+  - fully-free
+category: "administration"
+links:
+  docs: https://github.com/EduardoKrausME/moodle-profilefield_database#readme
+  issues: https://github.com/EduardoKrausME/moodle-profilefield_database/issues
