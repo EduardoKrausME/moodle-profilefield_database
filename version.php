@@ -24,8 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2025110300;
-$plugin->release = "1.1.11";
+$plugin->version = 2026100300;
+$plugin->release = '1.1.12';
 $plugin->requires = 2022112800;
 $plugin->component = "profilefield_database";
 $plugin->maturity = MATURITY_STABLE;
