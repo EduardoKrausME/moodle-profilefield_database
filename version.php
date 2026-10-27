@@ -31,6 +31,6 @@ $plugin->component = "profilefield_database";
 $plugin->maturity = MATURITY_STABLE;
 
 $plugin->dependencies = [
-    "local_kopere_dashboard" => 2026101900,
-    "local_kopere_bi" => 2026101900,
+    "local_kopere_dashboard" => 2026102700,
+    "local_kopere_bi" => 2026102700,
 ];
