@@ -2,6 +2,13 @@
 
 This changelog covers only the two most recent published releases of `profilefield_database`, based on their published Git tags and the changes since the preceding release tags. The `dependencies` commit made on October 20, 2026, after release `1.1.16`, is intentionally excluded.
 
+## 1.1.17 - 2026-10-27
+
+- Updated release workflow configuration and release metadata.
+- No plugin runtime files changed between the two published tags.
+
+**Full comparison:** [1.1.16...1.1.17](https://github.com/EduardoKrausME/moodle-profilefield_database/compare/1.1.16...1.1.17)
+
 ## [1.1.16] - 2026-10-15
 
 ### Changed
